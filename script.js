@@ -1,14 +1,30 @@
+// DOM Elements
 const timer = document.getElementById("timer");
-setInterval(function () {
-  let time = new Date().toLocaleTimeString();
-  timer.textContent = `${time}`;
-  ringAlarm();
-}, 1000);
-
 const selectHourElement = document.getElementById("hours");
 const selectMinuteElement = document.getElementById("minutes");
 const selectSecondElement = document.getElementById("seconds");
+const alarmBoxElement = document.getElementById("set-alarm-container");
+const setAlarmBtnElement = document.getElementById("set-alarm");
+const selectTimeZoneElement = document.getElementById("am-pm");
+const stopAlarmElement = document.getElementById("stop-alarm");
 
+// Variables
+const alarmArray = [];
+let idNumber = 0;
+
+// Event Listeners
+setAlarmBtnElement.addEventListener("click", alarmContainer);
+
+// Functions
+
+// Function to display and update the current time every second
+function updateTime() {
+  let time = new Date().toLocaleTimeString();
+  timer.textContent = `${time}`;
+  ringAlarm();
+}
+
+// Function to populate hour dropdown (1-12)
 function selectHour() {
   for (let i = 1; i <= 12; i++) {
     const optionElement = document.createElement("option");
@@ -18,49 +34,27 @@ function selectHour() {
   }
 }
 
+// Function to populate minute dropdown (1-59)
 function selectMinutes() {
   for (let i = 1; i < 60; i++) {
     const optionElement = document.createElement("option");
-    if (i < 10) {
-      optionElement.innerHTML = `0${i}`;
-      optionElement.value = `0${i.toString()}`;
-    } else {
-      optionElement.innerHTML = i;
-      optionElement.value = i.toString();
-    }
+    optionElement.innerHTML = i < 10 ? `0${i}` : i;
+    optionElement.value = i < 10 ? `0${i}` : i.toString();
     selectMinuteElement.append(optionElement);
   }
 }
 
+// Function to populate second dropdown (1-59)
 function selectSeconds() {
   for (let i = 1; i < 60; i++) {
     const optionElement = document.createElement("option");
-    if (i < 10) {
-      optionElement.innerHTML = `0${i}`;
-      optionElement.value = `0${i.toString()}`;
-    } else {
-      optionElement.innerHTML = i;
-      optionElement.value = i.toString();
-    }
+    optionElement.innerHTML = i < 10 ? `0${i}` : i;
+    optionElement.value = i < 10 ? `0${i}` : i.toString();
     selectSecondElement.append(optionElement);
   }
 }
 
-selectHour();
-selectMinutes();
-selectSeconds();
-
-const alarmBoxElement = document.getElementById("set-alarm-container");
-const setAlarmBtnElement = document.getElementById("set-alarm");
-const selectTimeZoneElement = document.getElementById("am-pm");
-
-setAlarmBtnElement.addEventListener("click", () => {
-  alarmContainer();
-});
-
-const alarmArray = [];
-let idNumber = 0;
-
+// Function to handle setting an alarm
 function alarmContainer() {
   const alarmElement = document.createElement("div");
   alarmElement.classList.add("alarm-element");
@@ -93,13 +87,15 @@ function alarmContainer() {
   }
 }
 
+// Function to check and ring the alarm
 function ringAlarm() {
   const currentTime = new Date().toLocaleTimeString();
   if (alarmArray.includes(currentTime)) {
     ring();
   }
 }
-const stopAlarmElement = document.getElementById("stop-alarm");
+
+// Function to play the alarm sound
 function ring() {
   const audioElement = document.createElement("audio");
   const stopAlarm = document.createElement("button");
@@ -114,3 +110,9 @@ function ring() {
     stopAlarm.remove();
   });
 }
+
+// Initialize dropdowns and start updating time
+selectHour();
+selectMinutes();
+selectSeconds();
+updateTime();
