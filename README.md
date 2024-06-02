@@ -1,12 +1,32 @@
-# Portfolio_CN
+# Clock-Based Alarm Project
 
+This project is a clock-based alarm application that allows you to set alarms at any desired time.
 
-##About the Project :-
+## Features
 
-🔴 This project is an clocked based alarm project
-🔴 You can set alarm at any desired time.
-🔴 The most important thing about this project is it makes use of local storage of your browser that means if you accidentally close the tab or entire window, the alarm you set is not gone. When you revisit the page you find it same as you left
-🔴 It also remembers at what time did you set alarm last time
+- **Set Alarms:** Easily set alarms for any desired time.
+
+## How to Use
+
+1. **Setting an Alarm:**
+   - Select the hour, minute, and second for your alarm.
+   - Choose AM or PM.
+   - Click the "Set Alarm" button to save the alarm.
+
+## Technologies Used
+
+- **HTML:** For the structure of the application.
+- **CSS:** For styling the application.
+- **JavaScript:** For the functionality and interaction with local storage.
+
+## Installation
+
+To run this project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rockysingh9431/Portfolio_CN.git
 
 #ScreenShot
 ![My Image](./Screenshot%202024-06-02%20154223.png)
+
