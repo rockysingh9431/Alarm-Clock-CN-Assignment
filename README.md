@@ -29,4 +29,4 @@ To run this project locally:
    ```
 
 #ScreenShot
-![My Image](./alarm-clock.png)
+![My Image](./alarm_clock.png)
