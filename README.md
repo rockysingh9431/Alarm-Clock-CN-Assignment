@@ -10,4 +10,4 @@
 🔴 It also remembers at what time did you set alarm last time
 
 #ScreenShot
-![My Image](./Screenshot%202024-06-02%20154223.png)
+![My Image](./alarm-clock.png)
