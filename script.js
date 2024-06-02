@@ -23,7 +23,7 @@ function updateTime() {
   timer.textContent = `${time}`;
   ringAlarm();
 }
-
+setInterval(updateTime, 1000);
 // Function to populate hour dropdown (1-12)
 function selectHour() {
   for (let i = 1; i <= 12; i++) {
@@ -81,8 +81,11 @@ function alarmContainer() {
 
     alarmBoxElement.append(alarmElement);
 
-    alarmElement.querySelector(".delete-btn").addEventListener("click", () => {
+    const deleteAlarmBtnElement = alarmElement.querySelector(".delete-btn");
+    deleteAlarmBtnElement.addEventListener("click", () => {
       alarmElement.remove();
+      const alarmToDelete = deleteAlarmBtnElement.innerHTML;
+      console.log(alarmToDelete);
     });
   }
 }
